@@ -16,7 +16,7 @@ val Meta.inlineSerialization: CliPlugin
     get() =
         "Inline Serialization" {
             meta(
-                classDeclaration({ isAnnotatedWith<InlineSerializable>() } ) { c ->
+                classDeclaration(this, { isAnnotatedWith<InlineSerializable>() } ) { c ->
                     val targetClass = TargetClass.tryMake(c).getOrHandle { problem ->
                         throw problem.toException()
                     }
